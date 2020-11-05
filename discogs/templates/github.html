@@ -1,0 +1,11 @@
+
+{% extends "base.html" %}
+
+{% block title %}github repo{% endblock title %}
+
+{% block content %}
+{% for repo in github_repos %}
+<li>{{ repo.name }}</li>
+{% endfor %}
+{% endblock content %}
+

@@ -1,0 +1,12 @@
+
+{% extends "base.html" %}
+
+{% block title %}All Albums{% endblock title %}
+
+{% block content %}
+<h1>All Albums</h1>
+<table>{{content}}</table>
+{% for row in data %}"{{ row.0|addslashes }}", "{{ row.1|addslashes }}", "{{ row.2|addslashes }}", "{{ row.3|addslashes }}", "{{ row.4|addslashes }}"
+{% endfor %}
+{% endblock content %}
+

@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from discogs import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('all_albums', views.all_albums),
+    path('github', views.github_api),
 ]
