@@ -4,8 +4,7 @@
 {% block title %}github repo{% endblock title %}
 
 {% block content %}
-{% for repo in github_repos %}
-<li>{{ repo.name }}</li>
-{% endfor %}
+{{ rendered_chart_svg|safe }}
+
 {% endblock content %}
 
