@@ -6,6 +6,7 @@ import pandas as pd
 import requests
 import csv
 import pygal
+from .models import DashboardPanel
 
 def github_api(request):
     response = requests.get('https://api.github.com/users/camibrennan/repos')
@@ -24,6 +25,13 @@ def github_api(request):
     }
 
     return render(request, 'github.html', context)
+
+def view_panels(request):
+    dboard_panels = DashboardPanel.objects.all()
+    context = {
+    "all_panels": dboard_panels,
+    }
+return render(request, "home_panels.html", context)
 
 def open_csv(): 
     discogs = open("discogs/discogs.csv")
