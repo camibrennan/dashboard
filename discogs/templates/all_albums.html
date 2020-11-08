@@ -3,6 +3,9 @@
 
 {% block title %}All Albums{% endblock title %}
 
+
 {% block content %}
-<li>{{ discogs_list }}</li>
+<h1>Discogs Collection</h1>
+{{ rendered_chart_svg|safe }}
+
 {% endblock content %}

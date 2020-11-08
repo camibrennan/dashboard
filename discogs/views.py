@@ -12,12 +12,13 @@ def github_api(request):
     repo_list = response.json()
 
     chart = pygal.Pie()
+    chart.title = 'GitHub Repositories by Size'
     for repo_dict in repo_list:
         value = repo_dict["size"]
-        label = repo_dict["name"]
+        label = repo_dict["full_name"]
         chart.add(label, value)
-
     chart_svg = chart.render()
+
     context = {
         "rendered_chart_svg": chart_svg,
     }
@@ -27,23 +28,35 @@ def github_api(request):
 def open_csv(): 
     discogs = open("discogs/discogs.csv")
     album_list = []
+
     for row in csv.DictReader(discogs):
         album_list.append({
         "Artist": row['Artist'],
         "Title": row['Title'],
         "Label": row['Label'], 
         "Format": row['Format'],
-        "Release Year": row["Released"], #TODO NUMBER OR STRING
+        "Released": int(row['Released']),
         })
+
     return album_list   
            
 
 def all_albums(request):
-    album_info = open_csv()
+    album_list = open_csv()
+    
+    chart = pygal.Pie()
+    for albums in album_list:
+        value = (5)
+        label = album_list[0]
+        chart.add(label, value)
+
+    chart_svg = chart.render()
     context = {
-    "discogs_list": album_info,
+        "rendered_chart_svg": chart_svg,
     }
+  
     return render(request,"all_albums.html", context)
 
 
 
+# dashboard ideas: by release year, by artist -- idk how to do that, 
