@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('all_albums', views.all_albums),
     path('github', views.github_api),
+    # path('home', views.view_panel),
 ]

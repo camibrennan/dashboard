@@ -1,0 +1,6 @@
+{% for panel in dboard_panels %}
+<div class="shadow border"> <!-- Example HTML / CSS -->
+<p>{{ panel.title }}</p>
+<a href="/details/{{ panel.id }}/">Click for more</a>
+</div>
+{% endfor %}

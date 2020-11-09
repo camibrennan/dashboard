@@ -31,19 +31,20 @@ def view_panels(request):
     context = {
     "all_panels": dboard_panels,
     }
-return render(request, "home_panels.html", context)
+    return render(request, "home_panels.html", context)
 
 def open_csv(): 
     discogs = open("discogs/discogs.csv")
     album_list = []
 
     for row in csv.DictReader(discogs):
+        integer = int(row['Released'])
         album_list.append({
         "Artist": row['Artist'],
         "Title": row['Title'],
         "Label": row['Label'], 
         "Format": row['Format'],
-        "Released": int(row['Released']),
+        "Released": integer,
         })
 
     return album_list   
