@@ -16,7 +16,7 @@ def github_api(request):
     chart.title = 'GitHub Repositories by Size'
     for repo_dict in repo_list:
         value = repo_dict["size"]
-        label = repo_dict["full_name"]
+        label = repo_dict["name"]
         chart.add(label, value)
     chart_svg = chart.render()
 
@@ -54,10 +54,17 @@ def all_albums(request):
     album_list = open_csv()
     
     chart = pygal.Pie()
-    for albums in album_list:
-        value = (5)
-        label = album_list[0]
+    chart.title = "Discogs"
+    for year in range(1995, 2020):
+        value = sum(1 for album in album_list if album["Released"] == year)
+        # print("value:", value)
+        label = str(year)
         chart.add(label, value)
+
+    # for album in album_list:
+    #     value = album["Released"]
+    #     label = str(album["Released"])
+    #     chart.add(label, value)
 
     chart_svg = chart.render()
     context = {
